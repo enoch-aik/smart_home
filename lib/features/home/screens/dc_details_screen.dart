@@ -12,7 +12,7 @@ class DCDetailsScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final dbProvider = ref.watch(realtimeDatabaseProvider);
-    final dcOn = useState<bool>(false);
+    final dcOn = useState<bool>(readings.ledState==1?true:false);
     return Scaffold(
       appBar: AppBar(
         title: KText(
@@ -38,10 +38,10 @@ class DCDetailsScreen extends HookConsumerWidget {
                   padding:
                       EdgeInsets.symmetric(horizontal: 16.w, vertical: 2.h),
                   decoration: BoxDecoration(
-                      color: readings.status! > 0 ? Colors.red : Colors.green,
+                      color: readings.status! < 1 ? Colors.red : Colors.green,
                       borderRadius: BorderRadius.circular(8.r)),
                   child: KText(
-                    readings.status! > 0 ? 'Faulty' : 'Healthy',
+                    readings.status! < 1 ? 'Faulty' : 'Healthy',
                     color: Colors.white, fontSize: 16.sp,
                     // color: readings.status! > 0 ? Colors.red : Colors.green,
                     fontWeight: FontWeight.w400,
@@ -61,7 +61,7 @@ class DCDetailsScreen extends HookConsumerWidget {
                   value: dcOn.value,
                   onChanged: (bool value) {
                     dcOn.value = value;
-                    dbProvider.setStatus(
+                    dbProvider.setLedState(
                       value: value ? 1 : 0,
                     );
                   })

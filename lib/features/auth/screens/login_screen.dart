@@ -7,6 +7,10 @@ import 'package:smart_home/features/home/screens/home_screen.dart';
 import 'package:smart_home/lib.dart';
 import 'package:smart_home/src/widgets/alert_dialog.dart';
 
+///This is the login screen for the application, it contain 2 textFields for email and passwords
+///There is a button to Sign in and also a button to Sign in with Google
+
+
 class LoginScreen extends HookConsumerWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -21,7 +25,7 @@ class LoginScreen extends HookConsumerWidget {
 
     // auth provider
     final auth = ref.read(authServiceProvider);
-
+    //formKey
     final GlobalKey<FormState> formKey = GlobalKey();
     return Scaffold(
       appBar: AppBar(),
@@ -42,6 +46,7 @@ class LoginScreen extends HookConsumerWidget {
             SizedBox(
               height: 56.h,
             ),
+            ///Textfield for email address
             DefaultTextFormField(
               label: 'Email address',
               hint: 'user@example.com',
@@ -57,6 +62,7 @@ class LoginScreen extends HookConsumerWidget {
                   return null;
                 }
             ),
+            ///Textfield for password
             Padding(
               padding: EdgeInsets.symmetric(vertical: 32.h),
               child: PasswordTextField(
@@ -91,7 +97,7 @@ class LoginScreen extends HookConsumerWidget {
                 ///FORGOT PASSWORD
                 InkWell(
                   onTap: () async {
-                    ///CONTACT FIREBASE HERE
+                    ///Open BOTTOM SHEET and CONTACT FIREBASE HERE
                     showModalBottomSheet(
                       context: context,
                       builder: (context) {
@@ -143,9 +149,11 @@ class LoginScreen extends HookConsumerWidget {
                                       width: double.maxFinite,
                                       child: FilledButton(
                                         onPressed: () async {
+                                          //get email in plain text
                                           String email =
                                               forgotPasswordEmailController.text
                                                   .trim();
+                                          //check if email is valid, then send 'forget password' request to server
                                           if (TextFieldValidator.emailExp
                                               .hasMatch(email)) {
                                             showLoadingDialog(context);
@@ -160,6 +168,7 @@ class LoginScreen extends HookConsumerWidget {
                                                       : value);
                                             });
                                           } else {
+                                            //if email is no valid, prompt user to input valid mail
                                             showMessageAlertDialog(context,
                                                 text:
                                                     'Provide a valid email address to continue to password reset');
@@ -192,6 +201,7 @@ class LoginScreen extends HookConsumerWidget {
               padding: EdgeInsets.symmetric(vertical: 40.h),
               child: ElevatedButton(
                   onPressed: () async {
+                    //if form is valid, try to login
                     if (formKey.currentState!.validate()) {
                       showLoadingDialog(context);
                       await auth
@@ -200,12 +210,14 @@ class LoginScreen extends HookConsumerWidget {
                               password: passwordController.text)
                           .then((value) {
                         Navigator.pop(context);
+                        //if UserCredential is the result, then the login was successful
                         if (value is UserCredential) {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => const HomeScreen()));
                         } else {
+                          //else show the error message
                           showMessageAlertDialog(context, text: value);
                         }
                       });
@@ -214,8 +226,8 @@ class LoginScreen extends HookConsumerWidget {
                   child: const KText('Login')),
             ),
 
-            Row(
-              children: const [
+            const Row(
+              children: [
                 Expanded(child: Divider()),
                 KText('  Or Login with  '),
                 Expanded(child: Divider())
@@ -228,6 +240,7 @@ class LoginScreen extends HookConsumerWidget {
                     showLoadingDialog(context);
                     await auth.googleSignIn().then((value) {
                       Navigator.pop(context);
+                      //if User is the result, then the login was successful
                       if (value is User) {
                         Navigator.pushAndRemoveUntil(
                             context,
@@ -236,6 +249,7 @@ class LoginScreen extends HookConsumerWidget {
                             (route) => false);
                       }
                       else {
+                        //else show error message
                         showMessageAlertDialog(context, text: value??'Failed to sign in with Google, try again');
                       }
                     });

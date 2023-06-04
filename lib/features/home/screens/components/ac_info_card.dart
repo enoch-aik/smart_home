@@ -63,7 +63,7 @@ class ACReadingsInfoCard extends HookConsumerWidget {
                     textAlign: TextAlign.left,
                     color: currentTheme.colorScheme.onPrimaryContainer),
                 if (acReadings?.temperature != null)
-                  KText('Temp: ${acReadings?.temperature}',
+                  KText('Temp: ${acReadings?.temperature}°C',
                       fontWeight: FontWeight.w400,
                       color: currentTheme.colorScheme.onPrimaryContainer
                       // textAlign: TextAlign.left,
@@ -79,7 +79,7 @@ class ACReadingsInfoCard extends HookConsumerWidget {
                         value: acOn.value,
                         onChanged: (bool value) {
                           acOn.value = value;
-                          dbProvider.setStatus(
+                          dbProvider.setLedState(
                               value: value ? 1 : 0, path: 'AC');
                         })
                   ],

@@ -7,6 +7,11 @@ import 'package:smart_home/features/home/screens/home_screen.dart';
 import 'package:smart_home/lib.dart';
 import 'package:smart_home/src/widgets/alert_dialog.dart';
 
+///This is the Signup/Create account screen for the application
+///It consist of textfield for full name, email address, password and confirm password
+///Each textfield have their corresponding validators
+
+
 class SignUpScreen extends HookConsumerWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 
@@ -37,6 +42,7 @@ class SignUpScreen extends HookConsumerWidget {
               SizedBox(
                 height: 56.h,
               ),
+              //Textfield for fullname
               DefaultTextFormField(
                 label: 'Full name',
                 hint: 'Type your full name here',
@@ -55,6 +61,7 @@ class SignUpScreen extends HookConsumerWidget {
               SizedBox(
                 height: 24.h,
               ),
+              //email textfield
               DefaultTextFormField(
                 label: 'Email address',
                 hint: 'user@example.com',
@@ -70,6 +77,7 @@ class SignUpScreen extends HookConsumerWidget {
                   return null;
                 },
               ),
+              //password textfield
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 24.h),
                 child: PasswordTextField(
@@ -87,6 +95,7 @@ class SignUpScreen extends HookConsumerWidget {
                 padding: EdgeInsets.symmetric(vertical: 10.h),
                 child: ElevatedButton(
                     onPressed: () async {
+                      //if form is valid, then create account, else prompt user to fill invalid textfields
                       if (formKey.currentState!.validate()) {
                         showLoadingDialog(context);
                         UserReqModel newUser = UserReqModel(
@@ -125,7 +134,7 @@ class SignUpScreen extends HookConsumerWidget {
                         validateMode = AutovalidateMode.always;
                       }
                     },
-                    child: const KText('Create Account')),
+                    child: const KText('Create Account'),),
               ),
               SizedBox(
                 height: 16.h,

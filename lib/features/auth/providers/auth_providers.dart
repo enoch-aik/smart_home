@@ -8,8 +8,10 @@ import 'package:smart_home/features/auth/repositories/repositories.dart';
 import 'package:smart_home/features/auth/services/auth_service.dart';
 import 'package:smart_home/main.dart';
 
+//Firebase authentication provider
 final firebaseAuthProvider = Provider<FirebaseAuth>((ref) => auth);
 
+//Firebase storage provider
 final firestoreProvider =
     Provider<FirebaseFirestore>((ref) => FirebaseFirestore.instance);
 
@@ -26,17 +28,13 @@ final authServiceProvider = ChangeNotifierProvider((ref) {
   return AuthService(authRepo);
 });
 
+//This boolean is used to get there is a current user, this is true if there is a current user and false if there is no current user
 final isLoggedIn = StateProvider<bool>((ref) {
   return ref.watch(firebaseAuthProvider).currentUser != null;
 });
 
+//This is used to get the details of the current User, if there is no user, this would be null
 final currentUserProvider = StateProvider<User?>((ref) {
   return ref.watch(firebaseAuthProvider).currentUser;
 });
 
-/*final userDetailsProvider = StateProvider<Map<String, dynamic>?>((ref) {
-  return jsonDecode(jsonEncode(ref
-      .watch(firestoreProvider)
-      .collection('users')
-      .doc(ref.watch(firebaseAuthProvider).currentUser?.uid)));
-});*/

@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:smart_home/features/auth/models/user.dart';
 import 'package:smart_home/features/auth/repositories/repositories.dart';
 
+//This is the authentication service for the application
+//This is more of a class that indirectly implements all the functions in AuthRepo
 class AuthService extends ChangeNotifier {
   final AuthRepository authRepo;
 

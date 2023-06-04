@@ -7,6 +7,7 @@ import 'package:smart_home/features/home/providers/location.dart';
 import 'package:smart_home/features/home/screens/home_screen.dart';
 import 'package:smart_home/src/src.dart';
 
+//This screen shows the splash screen
 class SplashScreen extends ConsumerWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -41,24 +42,24 @@ class SplashScreen extends ConsumerWidget {
           ),
           IconButton(
               onPressed: () {
+                //get if user has previously logged in
                 bool hasCurrentUser = ref.read(isLoggedIn.notifier).state;
+                //if user is logged in, then go to the HomeScreen()
                 if (hasCurrentUser) {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => const HomeScreen()));
-                } else {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()));
+                }
+                //else go the LoginScreen()
+                else {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                           builder: (context) => const LoginScreen()));
                 }
               },
-              icon: Icon(Icons.arrow_circle_right_rounded, size: 85.sp)
-              /* .animate(
-                  onPlay: (controller) => controller.repeat(),
-                )
-                .fade(duration: 500.ms, begin: 0.7, end: 1)
-                .scale(delay: 500.ms),*/
-              )
+              icon: Icon(Icons.arrow_circle_right_rounded, size: 85.sp))
         ],
       ),
     );

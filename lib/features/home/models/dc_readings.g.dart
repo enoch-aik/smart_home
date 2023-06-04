@@ -10,7 +10,7 @@ DCReadings _$DCReadingsFromJson(Map<String, dynamic> json) => DCReadings(
       current: (json['Current'] as num?)?.toDouble(),
       voltage: (json['Voltage'] as num?)?.toDouble(),
       ledState: json['ledstate'] as int?,
-      status: json['status'] as int?,
+      status: (json['status'] as num?)?.toDouble(),
       temperature: (json['temperature'] as num?)?.toDouble(),
     );
 

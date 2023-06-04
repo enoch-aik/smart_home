@@ -10,7 +10,7 @@ class DCReadings {
   final double? voltage;
   @JsonKey(name: 'ledstate')
   final int? ledState;
-  final int? status;
+  final double? status;
   final double? temperature;
 
   const DCReadings(

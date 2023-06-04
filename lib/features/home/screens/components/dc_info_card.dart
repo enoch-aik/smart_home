@@ -58,7 +58,7 @@ class DCReadingsInfoCard extends ConsumerWidget {
                   textAlign: TextAlign.left,
                   color: currentTheme.colorScheme.onPrimaryContainer),
               if (dcReadings?.temperature != null)
-                KText('Temp: ${dcReadings?.temperature}',
+                KText('Temp: ${dcReadings?.temperature}°C',
                     fontWeight: FontWeight.w400,
                     color: currentTheme.colorScheme.onPrimaryContainer
                     // textAlign: TextAlign.left,
@@ -74,7 +74,7 @@ class DCReadingsInfoCard extends ConsumerWidget {
                       value: dcOn.value,
                       onChanged: (bool value) {
                         dcOn.value = value;
-                        dbProvider.setStatus(value: value ? 1 : 0);
+                        dbProvider.setLedState(value: value ? 1 : 0);
                       })
                 ],
               )

@@ -69,7 +69,7 @@ class HomeScreen extends HookConsumerWidget {
                 )
               ],
             )
-          : null,
+          : AppBar(),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 16.w),
         children: [
