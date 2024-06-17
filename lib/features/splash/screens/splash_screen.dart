@@ -45,7 +45,11 @@ class SplashScreen extends ConsumerWidget {
                 //get if user has previously logged in
                 bool hasCurrentUser = ref.read(isLoggedIn.notifier).state;
                 //if user is logged in, then go to the HomeScreen()
-                if (hasCurrentUser) {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const HomeScreen()));
+                /* if (hasCurrentUser) {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
@@ -57,7 +61,7 @@ class SplashScreen extends ConsumerWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => const LoginScreen()));
-                }
+                }*/
               },
               icon: Icon(Icons.arrow_circle_right_rounded, size: 85.sp))
         ],

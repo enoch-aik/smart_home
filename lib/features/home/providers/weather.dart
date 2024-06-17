@@ -14,6 +14,6 @@ final weatherFProvider = FutureProvider<WeatherData>((ref) {
   } else {
     return ref
         .read(weatherProvider)
-        .currentWeatherByCityName(cityName: 'Ado-Ekiti',weatherUnits: WeatherUnits.METRIC);
+        .currentWeatherByCityName(cityName: 'Stockholm',weatherUnits: WeatherUnits.METRIC);
   }
 });
