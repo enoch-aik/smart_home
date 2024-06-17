@@ -11,7 +11,7 @@ The app was developed with Flutter and Firebase.
 
 | 4                                         | 5                                         | 6                                         |
 |-------------------------------------------|-------------------------------------------|-------------------------------------------|
-| <img src="screenshots/5.png" width="400"> | <img src="screenshots/6.png" width="400"> | <img src="screenshots/7.PNG" width="400"> |
+| <img src="screenshots/5.png" width="400"> | <img src="screenshots/6.png" width="400"> | <img src="screenshots/7.png" width="400"> |
 
 
 ## Packages & Libraries Used
