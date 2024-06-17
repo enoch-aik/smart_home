@@ -1,7 +1,7 @@
 # Smart home control app developed with Flutter <a href="https://flutter.dev" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/flutterio/flutterio-icon.svg" alt="flutter" width="40" height="40"/></a>
 
 This app was developed to remotely control a smart home system from anywhere in the world, provided that the device is connected to the internet. 
-The app was developed with Flutter and Firebase.
+The app was developed with Flutter, Arduino and Firebase.
 
 ## 📸 Screenshots
 
@@ -27,9 +27,6 @@ The app was developed with Flutter and Firebase.
 * [Google Sign In](https://github.com/firebase/flutterfire/tree/master/packages/) (Google Authentication)
 
 
-# smart_home
-
-A FinalYear project for smart home developed with Flutter (and Arduino).
 
 ## Getting Started
 
