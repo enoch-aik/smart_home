@@ -27,9 +27,6 @@ The app was developed with Flutter, Arduino and Firebase.
 * [Google Sign In](https://github.com/firebase/flutterfire/tree/master/packages/) (Google Authentication)
 
 
-# smart_home
-
-A FinalYear project for smart home developed with Flutter (and Arduino).
 
 ## Getting Started
 
